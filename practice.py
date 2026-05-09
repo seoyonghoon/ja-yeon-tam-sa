@@ -21,9 +21,10 @@ vN = (v - vnn[0]) / vnn[1]
 
 # 다항함수 회귀
 polynomialC = np.random.normal(0, 1, 10)
-polynomialV = [alt**2, grad**2, fatigue**2, alt*grad, grad*fatigue, fatigue*alt, alt, grad, fatigue, np.ones(len(alt))] #DelCP역할
+polynomialV = [altN**2, gradN**2, fatigueN**2, altN*gradN, gradN*fatigueN, fatigueN*altN, altN, gradN, fatigueN, np.ones(len(alt))] #DelCP역할
 
 def polynomial(a, g, f):
+    a, g, f = (a - altnn[0])/altnn[1], (g - gradnn[0])/gradnn[1], (f - fatiguenn[0])/fatiguenn[1]
     return np.dot(polynomialC, [a*a, g*g, f*f, a*g, g*f, f*a, a, g, f, 1])
 
 for _ in range(N): 
